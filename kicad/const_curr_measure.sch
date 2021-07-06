@@ -3153,4 +3153,15 @@ F 3 "~" H 15000 1850 50  0001 C CNN
 	1    15000 1850
 	1    0    0    -1  
 $EndComp
+$Comp
+L Connector_Generic:Conn_01x05 J13
+U 1 1 6130893A
+P 12600 4550
+F 0 "J13" H 12680 4592 50  0000 L CNN
+F 1 "Conn_01x05" H 12680 4501 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical" H 12600 4550 50  0001 C CNN
+F 3 "~" H 12600 4550 50  0001 C CNN
+	1    12600 4550
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
