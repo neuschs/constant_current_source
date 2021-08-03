@@ -3,10 +3,19 @@
 
 #define VERSION_STRING          "v0.1"
 #define BAUD_RATE               115200
+
+/* set debounce delay to 20ms */
+#define BUTTON_DEBOUNCE_DELAY   20
+
+/* range up & range down button pins */
+#define BUTTON_RANGE_UP_PIN     ;;;
+#define BUTTON_RANGE_DOWN_PIN   ;;;
+
 /* self test verification borders */
 #define MAX_DAC_OUT_DIFFERENCE  0.007  /* in decimal percent points IS DEPENDENT FROM ARDUINO REFERENCE PRECISISION  */
 #define ARDUINO_MAX_ADC_IN      0x3FF
 #define ARDUINO_REF_VOLTAGE     5.000
+/* self test adc inputs */
 #define DAC_OUT_READBACK        A1
 #define DAC_OUT_FS_READBACK     A2
 
@@ -74,6 +83,9 @@ uint16_t value : DAC_MCP4821_BITs;
 
 /* global ressource structure */
 typedef struct {
-  unsigned char range;
-  uint16_t gusError;
+  uint8_t range;        /* active range consisting of RELAY_10000mA_Mask etc... */
+  uint16_t gusError;    /* global error "short" */
+  double mosfetTemp;    /* tempreature at FET */
+  double referenceTemp;
+  double atmelTemp;
 } RSC_STRUCT_T;
