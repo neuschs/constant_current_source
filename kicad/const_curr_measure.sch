@@ -3164,4 +3164,15 @@ F 3 "~" H 12600 4550 50  0001 C CNN
 	1    12600 4550
 	1    0    0    -1  
 $EndComp
+$Comp
+L Amplifier_Operational:LM324 U?
+U 4 1 610CC904
+P 7100 6550
+F 0 "U?" H 7100 6917 50  0000 C CNN
+F 1 "LM324" H 7100 6826 50  0000 C CNN
+F 2 "" H 7050 6650 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/lm2902-n.pdf" H 7150 6750 50  0001 C CNN
+	4    7100 6550
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
