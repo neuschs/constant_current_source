@@ -8,16 +8,40 @@
 #define BUTTON_DEBOUNCE_DELAY   20
 
 /* range up & range down button pins */
-#define BUTTON_RANGE_UP_PIN     ;;;
-#define BUTTON_RANGE_DOWN_PIN   ;;;
+#define BUTTON_RANGE_UP_PIN     4
+#define BUTTON_RANGE_DOWN_PIN   5
 
 /* self test verification borders */
-#define MAX_DAC_OUT_DIFFERENCE  0.007  /* in decimal percent points IS DEPENDENT FROM ARDUINO REFERENCE PRECISISION  */
+#define MAX_DAC_OUT_DIFFERENCE  0.007  /* in decimal percent points 0.7%  */
 #define ARDUINO_MAX_ADC_IN      0x3FF
 #define ARDUINO_REF_VOLTAGE     5.000
+#define TEMP_R_FEEDBACK         388.0
+#define TEMP_R_IN               99.0
+#define TEMP_REF_TEMP_COEF      1.96  /* 1.96mV / °C */
+#define TEMP_REF_BASE_TEMP      25.0  /* °C */
+#define TEMP_REF_BASE_MVOLT     550   /* mV at TEMP_REF_BASE_TEMP */
+#define DIGITS_TO_SHOW          4
+#define AVERAGING_SAMPLES       50  /* standard averaging samples */
+
+/* maximum current ratings per range in mA */
+#define MAX_CURR_20MA           ((float)20.0)
+#define MAX_CURR_100MA          ((float)100.0)
+#define MAX_CURR_1000MA         ((float)1000.0)
+#define MAX_CURR_10000MA        ((float)10000.0)
+
 /* self test adc inputs */
 #define DAC_OUT_READBACK        A1
 #define DAC_OUT_FS_READBACK     A2
+#define TEMP_REFERENCE_VOLT_PIN A3
+
+/* MCP3202 Defines */
+#define ADC_MCP3202_CS          8
+#define ADC_MCP3202_REF_V       5.000 /* from ref02cp */
+#define ADC_CHANNEL_SENSE_A     0
+#define ADC_CHANNEL_SENSE_B     1
+#define VOLT_DIV_ATTENTUATION   8
+#define DAC_MCP3202_BITs        12
+#define ADC_MAX_COUNT           (pow(2, DAC_MCP3202_BITs) -1)
 
 /* MCP4821 Defines */
 #define DAC_MCP4821_CS_Offset   2
@@ -56,23 +80,29 @@
 #define ERROR_I2C_Mask          (1 << ERROR_I2C_Offset)
 #define ERROR_DAC_OUT_Offset    1
 #define ERROR_DAC_OUT_Mask      (1 << ERROR_DAC_OUT_Offset)
-#define ERROR_DAC_OUT_FS_Offset 1
+#define ERROR_DAC_OUT_FS_Offset 2
 #define ERROR_DAC_OUT_FS_Mask   (1 << ERROR_DAC_OUT_FS_Offset)
+#define ERROR_SCPI_PARAM_Offset 3
+#define ERROR_SCPI_PARAM_Mask   (1 << ERROR_SCPI_PARAM_Offset)
+
 
 /* SCPI Commands */
 #define SCPI_IDENTIFY_CMD       F("*IDN?")
 #define SCPI_ERROR_READ_CMD     F("*ERR?")
 #define SCPI_SELF_TEST_CMD      F("*TEST?")
-#define SCPI_RANGE_CMD_REQ      F("RANGE?")
-#define SCPI_RANGE_CMD_TREE     F("RANGE")
-#define SCPI_RANGE_20mA         F(":20MA")
-#define SCPI_RANGE_100mA        F(":100MA")
-#define SCPI_RANGE_1000mA       F(":1A")
-#define SCPI_RANGE_10000mA      F(":10A")
-#define SCPI_TEMP_CMD_TREE      F("TEMP")
-#define SCPI_TEMP_INTERNAL      F(":INTernal?")   /* query for internal temprature */
-#define SCPI_TEMP_MOSFET        F(":MOSfet?")     /* query for tempretaure at high side mosfet */
-#define SCPI_TEMP_REF           F(":REFerence?")  /* query for tempretaure at reference voltage */
+#define SCPI_RANGE_CMD_REQ      F("*RANGE?")
+#define SCPI_RANGE_20mA         F("RANGE:20MA")
+#define SCPI_RANGE_100mA        F("RANGE:100MA")
+#define SCPI_RANGE_1000mA       F("RANGE:1A")
+#define SCPI_RANGE_10000mA      F("RANGE:10A")
+#define SCPI_TEMP_INTERNAL      F("TEMP:INTernal?")   /* query for internal temprature */
+#define SCPI_TEMP_MOSFET        F("TEMP:MOSfet?")     /* query for tempretaure at high side mosfet */
+#define SCPI_TEMP_REF           F("TEMP:REFerence?")  /* query for tempretaure at reference voltage */
+#define SCPI_VOLT_SENSE_A       F("VOLT:A?")
+#define SCPI_VOLT_SENSE_B       F("VOLT:B?")
+#define SCPI_VOLT_ABSOLUTE      F("VOLT:ABS?")
+#define SCPI_CURR_SET           F("CURR:SET")
+#define SCPI_CURR_GET           F("CURR:GET?")
 
 /* MCP4821 Command Struct */
 typedef struct {
@@ -88,4 +118,10 @@ typedef struct {
   double mosfetTemp;    /* tempreature at FET */
   double referenceTemp;
   double atmelTemp;
+  float voltageA;
+  float voltageB;
+  float absoluteVoltage;
+  float setCurrent;
+  float maximumCurrentInRange;
+  bool measurementDone;
 } RSC_STRUCT_T;

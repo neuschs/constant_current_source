@@ -10,3 +10,9 @@ void scpi_select_range_20ma(SCPI_C commands, SCPI_P parameters, Stream& interfac
 void scpi_select_range_100ma(SCPI_C commands, SCPI_P parameters, Stream& interface);
 void scpi_select_range_1000ma(SCPI_C commands, SCPI_P parameters, Stream& interface);
 void scpi_select_range_10000ma(SCPI_C commands, SCPI_P parameters, Stream& interface);
+void scpi_get_range(SCPI_C commands, SCPI_P parameters, Stream& interface);
+void scpi_get_voltage_a(SCPI_C commands, SCPI_P parameters, Stream& interface);
+void scpi_get_voltage_b(SCPI_C commands, SCPI_P parameters, Stream& interface);
+void scpi_get_absolute_voltage(SCPI_C commands, SCPI_P parameters, Stream& interface);
+void scpi_set_current(SCPI_C commands, SCPI_P parameters, Stream& interface);
+void scpi_get_current(SCPI_C commands, SCPI_P parameters, Stream& interface);
