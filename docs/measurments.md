@@ -26,7 +26,7 @@ Measured against reference voltage source REF02
 |75% of Counts|      5.214200 V  |
 
 ### Boxplot and Histogram
-![alt_text](https://github.com/neuschs/constant_current_source/blob/be0c6ac58962ab518f57ccae12046b3fc8509949/measurements/revision_0.1/histogram_boxplot_2hours_voltage_a.png)
+<img src="../measurements/revision_0.1/histogram_boxplot_2hours_voltage_a.png" alt="hi" class="inline"/>
 
 ### Voltage B (Sense B):
 | Value | Measurment |
@@ -40,10 +40,10 @@ Measured against reference voltage source REF02
 |75% of Counts:    |  5.148100 V  |
 
 ### Boxplot and Histogram
-![alt_text](https://github.com/neuschs/constant_current_source/blob/be0c6ac58962ab518f57ccae12046b3fc8509949/measurements/revision_0.1/histogram_boxplot_2hours_voltage_b.png)
+<img src="../measurements/revision_0.1/histogram_boxplot_2hours_voltage_b.png" alt="hi" class="inline"/>
 
 ### Overview over 2 Hours
-![alt text](https://github.com/neuschs/constant_current_source/blob/be0c6ac58962ab518f57ccae12046b3fc8509949/measurements/revision_0.1/stability_over_2hours.png)
+<img src="../measurements/revision_0.1/stability_over_2hours.png" alt="hi" class="inline"/>
 
 ### Result
 > In some mysterious way, Sense A voltage measrument is way more bad than Sense B. Next measurment will be done over 24h with better shielding against the USB connection which is directly over the input attentuation voltage divider.
