@@ -26,7 +26,7 @@ Measured against reference voltage source REF02
 |75% of Counts|      5.214200 V  |
 
 ### Boxplot and Histogram
-<img src="../measurements/revision_0.1/histogram_boxplot_2hours_voltage_a.png" alt="hi" class="inline"/>
+![Voltage_A_BBOxplot](/measurements/revision_0.1/histogram_boxplot_2hours_voltage_a.png)
 
 ### Voltage B (Sense B):
 | Value | Measurment |
