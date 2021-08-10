@@ -1,3 +1,7 @@
+layout: page
+title: "Measurments"
+permalink: /measurments/
+
 # Measurments
 ## Revision 0.1
 ### Stability over 2 Hours
